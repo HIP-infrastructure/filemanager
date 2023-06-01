@@ -26,15 +26,17 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 ENV APP_SPECIAL="no"
-ENV APP_CMD="pcmanfm-qt"
+ENV APP_CMD="source .bash_profile; pcmanfm-qt"
 ENV PROCESS_NAME="pcmanfm-qt"
 ENV APP_DATA_DIR_ARRAY=".config/pcmanfm-qt"
 ENV DATA_DIR_ARRAY=""
+ENV CONFIG_ARRAY=".bash_profile"
 
 HEALTHCHECK --interval=10s --timeout=10s --retries=5 --start-period=30s \
   CMD sh -c "/apps/${APP_NAME}/scripts/process-healthcheck.sh \
   && /apps/${APP_NAME}/scripts/ls-healthcheck.sh /home/${HIP_USER}/nextcloud/"
 
 COPY ./scripts/ scripts/
+COPY ./apps/${APP_NAME}/config config/
 
 ENTRYPOINT ["./scripts/docker-entrypoint.sh"]
