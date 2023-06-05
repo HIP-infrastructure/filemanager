@@ -8,7 +8,7 @@ then
   if [ ! -f $SETTINGS ]
   then
     mkdir -p $SETTINGS_PATH
-    cat /apps/$APP_NAME/config/$SETTINGS_FILE > $SETTINGS
+    cat /apps/filemanager/config/$SETTINGS_FILE > $SETTINGS
   fi
 
   if ! grep -Fxq HiddenPlaces $SETTINGS
