@@ -11,7 +11,7 @@ then
     cat /apps/filemanager/config/$SETTINGS_FILE > $SETTINGS
   fi
 
-  if ! grep ^HiddenPlaces $SETTINGS
+  if ! grep -q ^HiddenPlaces $SETTINGS
   then
     sed -i "/^\[Places\].*/a HiddenPlaces=computer:///, $HOME/Desktop, network:///, menu://applications/" $SETTINGS
   fi 

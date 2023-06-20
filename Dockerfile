@@ -26,7 +26,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 ENV APP_SPECIAL="no"
-ENV APP_CMD="source .bash_profile; pcmanfm-qt"
+ENV APP_CMD="pcmanfm-qt"
 ENV PROCESS_NAME="pcmanfm-qt"
 ENV APP_DATA_DIR_ARRAY=".config/pcmanfm-qt"
 ENV DATA_DIR_ARRAY=""
