@@ -19,14 +19,14 @@ WORKDIR /apps/${APP_NAME}
 
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y \
-    pcmanfm-qt && \
+    apt-get install --no-install-recommends -y \
+    libgtk2.0-bin libgtk-3-bin dbus-x11 pcmanfm-qt && \
     apt-get autoremove -y --purge && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 ENV APP_SPECIAL="no"
-ENV APP_CMD="source .bash_profile; pcmanfm-qt"
+ENV APP_CMD="pcmanfm-qt"
 ENV PROCESS_NAME="pcmanfm-qt"
 ENV APP_DATA_DIR_ARRAY=".config/pcmanfm-qt"
 ENV DATA_DIR_ARRAY=""
