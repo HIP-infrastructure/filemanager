@@ -19,8 +19,8 @@ WORKDIR /apps/${APP_NAME}
 
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y \
-    pcmanfm-qt && \
+    apt-get install --no-install-recommends -y \
+    libgtk2.0-bin libgtk-3-bin dbus-x11 pcmanfm-qt && \
     apt-get autoremove -y --purge && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
