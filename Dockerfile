@@ -20,7 +20,13 @@ WORKDIR /apps/${APP_NAME}
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install --no-install-recommends -y \
-    libgtk2.0-bin libgtk-3-bin dbus-x11 pcmanfm-qt && \
+    libgtk2.0-bin libgtk-3-bin dbus-x11 pcmanfm-qt \
+    #pdf viewer
+    qpdfview \
+    #text editor
+    featherpad \
+    #libreoffice
+    libreoffice && \
     apt-get autoremove -y --purge && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
@@ -28,7 +34,7 @@ RUN apt-get update && \
 ENV APP_SPECIAL="no"
 ENV APP_CMD="pcmanfm-qt"
 ENV PROCESS_NAME="pcmanfm-qt"
-ENV APP_DATA_DIR_ARRAY=".config/pcmanfm-qt"
+ENV APP_DATA_DIR_ARRAY=".config/pcmanfm-qt .config/libreoffice"
 ENV DATA_DIR_ARRAY=""
 ENV CONFIG_ARRAY=".bash_profile"
 
